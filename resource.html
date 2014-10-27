@@ -1,0 +1,116 @@
+
+<div ng-show="$parent.selection =='RscListPage'">
+  
+<ul ng-show="a.selection == 'RscListPage'" class="breadcrumb">
+  <li><a ng-click="gohome()">Home</a> <span class="divider">/</span></li>
+  <li class="active">Resources</li>
+</ul>
+
+<ul ng-show="a.selection=='NewRscPage' || a.selection=='EditRscPage'" class="breadcrumb">
+  <li><a ng-click="gohome()">Home</a> <span class="divider">/</span></li>
+   <li><a ng-click="a.selection = 'RscListPage'">Resources</a> <span class="divider">/</span></li>    
+   <li class="active">{{title}}</li>
+ </ul>
+ 
+ 
+<div ng-show="a.selection=='NewRscPage' || a.selection=='EditRscPage'" class="navbar" style="width:95%;">
+  <div class="navbar-inner">
+   <ul class="nav">
+   <li><a href="#"><i class="fa fa-refresh" title="Reload Page"></i></a></li>
+   <li><a href="#"><i class="fa fa-user" title="Creation / Modified By"></i></a></li>
+   <li><a href="#"><i class="fa fa-comments" title="Comments"></i></a></li>
+   <li><a href="#"><i class="fa fa-envelope" title="Email"></i></a></li>
+   <li><a href="#"><i class="fa fa-arrow-left" title="Previous Record"></i></a></li>
+   <li><a href="#"><i class="fa fa-arrow-right" title="Next Record"></i></a></li>
+</ul>
+    <ul class="nav pull-right">
+      <li ><a href="#" alt="refresh"><i class="fa fa-puzzle-piece"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-file-o"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-list"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-table"></i></a></li>
+    </ul>
+  </div>
+</div>
+
+<div ng-show="a.selection == 'RscListPage'" class="navbar" style="width:95%;">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li ><a href="#" alt="refresh"><i class="fa fa-refresh"></i></a></li>
+      <li><a ng-click="a.selection='NewRscPage'" ><i class="fa fa-plus"></i></a></li>
+      <li><a href="#" ><i class="fa fa-search"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-tag"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-times"></i></a></li>
+      <li class="pull-right"><a href="#" atl><i class="fa fa-check"></i></a></li>
+    </ul>
+    <ul class="nav pull-right">
+      <li ><a href="#" alt="refresh"><i class="fa fa-puzzle-piece"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-file-o"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-list"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-table"></i></a></li>
+    </ul>
+  </div>
+</div>
+ 
+ 
+ <div ng-show="a.selection=='RscListPage'">
+      <table class="table table-hover" style="width:90%">
+     	  <tr ng-repeat="r in a.rsclist.data">
+		  	<td>{{$index + 1}}</td>
+		  	<td><a stop-event="click" ng-click="a.rsclist.current = r;a.selection='EditRscPage'">{{r.task_name}}</a></td>
+      		<td>{{r.GROUP_NAME}}</td>
+      		<td>{{r.RSRC_NAME}}</td>
+      	  </tr>
+    </table>
+</div>
+<div ng-show="a.selection=='NewRscPage' || a.selection=='EditRscPage'">
+  <form class="form-horizontal"> 
+    <fieldset>
+    <!-- Form Name -->
+    <legend><i class="fa fa-align-justify"></i> Group Resource Details</legend>
+    <!-- Text input-->
+    <div class="row-fluid">
+    <div class="span6">
+  <!-- Text input-->
+  
+  <div class="control-group">
+  <label class="control-label" for="customerId">Group</label>
+  <div class="controls">
+     <div ng-show ="a.grouplist.data.length !== 0" >
+      <select ng-model="groupId">
+           <option ng-repeat="group in a.grouplist.data" value="{{group.ID}}">
+               {{group.GROUP_NAME}}
+           </option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- Select Basic -->  
+     <div class="control-group">
+  <label class="control-label" for="userId">Resource</label>
+  <div class="controls">
+     <div ng-show ="a.userresources.data.length !== 0" >
+      <select ng-model="userId">
+           <option ng-repeat="resource in a.userresources.data" value="{{resource.ID}}">
+               {{resource.first_name }} {{resource.last_name}}
+           </option>
+      </select>
+    </div>
+  </div>
+</div>
+    <div class="control-group">
+     <div class="controls">
+        <div class="btn btn-success" ng-click="addNewGroup();">Save</div>
+      </div>
+    </div>
+</div>
+</div>  
+</div>
+</fieldset>
+</form>
+</div>
+</div>
+</form>
+</div>
+ 
+</div>
