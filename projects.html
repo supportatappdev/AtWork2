@@ -1,0 +1,307 @@
+
+<div ng-show="$parent.selection =='ProjListPage'">
+
+<ul ng-show="projselection == 'NewProj' || projselection == 'EditProjectPage'" class="breadcrumb">
+  <li><a ng-click="gohome()">Home</a> <span class="divider">/</span></li>
+  <li><a ng-click="projselection='ProjList'">Projects</a> <span class="divider">/</span></li>
+  <li class="active">{{createprojectitle}}</li>
+  
+  <li ng-show="projselection == 'EditProjectPage'" class="pull-right">
+      <div class="btn-group">  
+          <button class="btn btn-mini">Action</button>
+          <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+           <li> <a href="#/tasklist/{{a.projlist.current.proj_id}}"><i class="fa fa-list-ul"></i> Tasks</a></li>
+          </ul>
+    </div>
+  </li>
+</ul>
+
+<ul ng-show="projselection == 'ProjList'" class="breadcrumb">
+  <li><a ng-click="gohome()">Home</a> <span class="divider">/</span></li>
+  <li class="active">Projects</li>
+</ul>
+
+<div ng-show="projselection == 'NewProj' ||  projselection == 'EditProjectPage'" class="navbar" style="width:95%;">
+  <div class="navbar-inner">
+   <ul class="nav">
+   <li><a href="#"><i class="fa fa-refresh" title="Reload Page"></i></a></li>
+   <li><a href="#"><i class="fa fa-user" title="Creation / Modified By"></i></a></li>
+   <li><a href="#"><i class="fa fa-comments" title="Comments"></i></a></li>
+   <li><a href="#"><i class="fa fa-paperclip" title="Attachments"></i></a></li>
+   <li><a href="#"><i class="fa fa-flag" title="Assignments"></i></a></li>
+   <li><a href="#"><i class="fa fa-link" title="Linked With"></i></a></li>
+   <li><a href="#"><i class="fa fa-print" title="Print"></i></a></li>
+   <li><a href="#"><i class="fa fa-envelope" title="Email"></i></a></li>
+   <li><a href="#"><i class="fa fa-arrow-left" title="Previous Record"></i></a></li>
+   <li><a href="#"><i class="fa fa-arrow-right" title="Next Record"></i></a></li>
+</ul>
+    <ul class="nav pull-right">
+      <li ><a href="#" alt="refresh"><i class="fa fa-puzzle-piece"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-file-o"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-list"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-table"></i></a></li>
+    </ul>
+  </div>
+</div>
+
+<div ng-show="projselection == 'ProjList'" class="navbar" style="width:95%;">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li ><a  ng-click="$parent.selection='ProjList'" alt="refresh"><i class="fa fa-refresh"></i></a></li>
+      <li><a ng-click="projselection='NewProj'" ><i class="fa fa-plus"></i></a></li>
+      <li><a href="#" ><i class="fa fa-search"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-tag"></i></a></li>
+      <li><a ng-click="deleteProj()" atl><i class="fa fa-times"></i></a></li>
+      <li ><a href="#" atl><i class="fa fa-check"></i></a></li>
+    </ul>
+    <ul class="nav pull-right">
+      <li ><a href="#" alt="refresh"><i class="fa fa-puzzle-piece"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-file-o"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-list"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-table"></i></a></li>
+    </ul>
+  </div>
+</div>
+    <!--<div class="alert alert-block">
+        <div ><a href="javascript:history.back()"  style="margin-right:500px"> Back</a>     Project List  <a  stop-event="click" ng-click="projselection='NewProj'" style="margin-left:450px">New </a></div>  
+    </div> 
+    -->
+    <div ng-show="projselection == 'ProjList'" >
+          <table class="table table-hover" style="width:90%">
+          	<tbody>
+     		  <tr ng-repeat="r in a.projlist.data">
+    		  	<td>
+    		  	<input type="checkbox" name="check{{$index + 1}}" ng-model="projchecked"/>
+    <!--		  	<input type="checkbox" check-list="" selected-items-array="$parent.selectedItems" value="{{r.proj_id}}" />
+    -->          
+    		  	</td>
+    		  	<td><a stop-event="click" ng-click="a.projlist.current = r;$parent.projselection='EditProjectPage';a.selection='EditProjectPage'"><!--<a href="#/tasklist/{{r.ID}}">-->{{r.PROJECT_NAME}}</a></td>
+          		<td>{{r.DESCRIPTION}}</td>
+          		<td>{{r.Status}}</td>
+    		  </tr></tbody>
+        </table>
+    </div>    
+ 
+</div>
+<div ng-show="projselection == 'NewProj' || projselection == 'EditProjectPage'" >
+
+    <form class="form-horizontal"> 
+    <fieldset>
+    <!-- Form Name -->
+    <legend>{{createprojectitle}}</legend>
+    <!-- Text input-->
+    <div class="row-fluid">
+    <div class="span6">
+  <!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="projectName">Project Name</label>
+  <div class="controls">
+    <input id="projectName" name="projectName" type="text" ng-model="projectName" placeholder="placeholder" class="input-xlarge">
+    <p class="help-block">Project will get saved and will be searchable with project name given</p>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="status">Status</label>
+  <div class="controls">
+    <select id="status" name="status" ng-model="status" class="input-xlarge">
+      <option>Open</option>
+      <option>Completed</option>
+      <option>Cancelled</option>
+    </select> 
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="isActive">Is Active</label>
+  <div class="controls">
+    <select id="isActive" name="isActive" ng-model="isactive" class="input-xlarge">
+      <option value="Y">Yes</option>
+      <option value="N">No</option>
+    </select>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="priority">Priority</label>
+  <div class="controls">
+    <select id="priority" name="priority" ng-model="priority" class="input-xlarge">
+      <option value="M">Medium</option>
+      <option value="L">Low</option>
+      <option value="H">High</option>
+    </select>
+  </div>
+</div>
+
+    
+    </div>
+    <div class="span3">
+     
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="projStartDate">Project Start Date</label>
+  <div class="controls">
+             <input type="text" id="psd"
+             class="form-control" datepicker-popup="{{format}}" 
+                ng-model="projectStartDate" is-open="psdopend"
+                datepicker-options="dateOptions" 
+                ng-required="true" 
+                close-text="Close" 
+                ng-click="open($event);psdopend = true"/>
+<!--     <input id="projStartDate" name="projStartDate" type="text" placeholder="" class="input-xlarge" required="">
+-->  
+    
+</div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="projcmplDate">Completion Date</label>
+  <div class="controls">
+    <input type="text" class="form-control" id="pcd"
+                    datepicker-popup="{{format}}" 
+                    ng-model="completionDate" 
+                    is-open="pcdopend" 
+                    datepicker-options="dateOptions"  
+                    ng-required="true" 
+                    close-text="Close" ng-click="open($event);pcdopend = true">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="projactcmplDate">Actual Completion Date </label>
+  <div class="controls">
+      <input type="text" class="form-control" id="pcd"
+                    datepicker-popup="{{format}}" 
+                    ng-model="actualCompletionDate" 
+                    is-open="pacdopend" 
+                    datepicker-options="dateOptions"  
+                    ng-required="true" 
+                    close-text="Close" ng-click="open($event);pacdopend = true">
+  </div>    
+</div>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="projectType">Project Type</label>
+  <div class="controls">
+    <select id="projectType" ng-model="projectType" name="projectType" class="input-xlarge">
+      <option value="I">Internal</option>
+      <option value="E">External</option>
+      <option value="O">Others</option>
+    </select>
+  </div>
+</div>
+<div class="control-group">
+ <div class="controls">
+    <div class="btn btn-success" ng-click="addNewProject();">Save</div>
+  </div>
+</div>
+    </div>
+    </div>
+    </fieldset>
+</form>
+<form class="form-horizontal"> 
+    <fieldset>
+    <!-- Form Name -->
+    <legend>Project Details</legend>
+    <!-- Text input-->
+    <div class="row-fluid">
+    <div class="span6">
+    <!-- Textarea --> 
+<div class="control-group">
+  <label class="control-label" for="projDetails"></label>
+  <div class="controls">                     
+    <textarea id="projDetails" name="projDetails" rows="10" style="width:800px"></textarea>
+  </div>
+</div>
+    </div>
+    </div>
+    </form>
+    
+<form class="form-horizontal"> 
+    <fieldset>
+    <!-- Form Name -->
+    <legend>Project Cost Details</legend>
+    <!-- Text input-->
+    <div class="row-fluid">
+    <div class="span6">
+    
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="projValue">Project Value</label>
+  <div class="controls">
+    <input id="projValue" name="projValue" type="text" placeholder="" class="input-xlarge">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="estMatCost">Estimated Material Cost</label>
+  <div class="controls">
+    <input id="estMatCost" name="estMatCost" type="text" placeholder="" class="input-xlarge">
+    
+  </div>
+</div>
+ </div>
+    <div class="span5">
+        
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="grossmargin">Gross Margin Value</label>
+  <div class="controls">
+    <input id="grossmargin" name="grossmargin" type="text" placeholder="" class="input-xlarge">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="grossmarginperc">Gross Margin %</label>
+  <div class="controls">
+    <input id="grossmarginperc" name="grossmarginperc" type="text" placeholder="" class="input-xlarge">
+    
+  </div>
+</div> 
+    </div>
+    
+    </div>
+    </form>
+        
+
+<form class="form-horizontal"> 
+    <fieldset>
+    <!-- Form Name -->
+    <legend>Customer Details</legend>
+    <!-- Text input-->
+    <div class="row-fluid">
+    <div class="span6">
+           
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="customerId">Customer</label>
+  <div class="controls">
+     <div ng-show ="a.projects.data.length !== 0" >
+      <select ng-model="customerId">
+           <option ng-repeat="cust in a.customers.data" value="{{cust.ID}}">
+               {{cust.FULL_NAME}}
+           </option>
+      </select>
+    </div>    
+  </div>
+</div>  
+    </div>
+    </div>
+    </form>  
+    
+</div>  
+</div>
