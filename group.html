@@ -1,0 +1,103 @@
+
+<div ng-show="$parent.selection =='GroupListPage'">
+  
+<ul ng-show="a.selection == 'GroupListPage'" class="breadcrumb">
+  <li><a ng-click="gohome()">Home</a> <span class="divider">/</span></li>
+  <li class="active">Groups</li>
+</ul>
+
+<ul ng-show="a.selection=='NewGroupPage' || a.selection=='EditGroupPage'" class="breadcrumb">
+  <li><a ng-click="gohome()">Home</a> <span class="divider">/</span></li>
+   <li><a ng-click="a.selection = 'GroupListPage'">Groups</a> <span class="divider">/</span></li>    
+   <li class="active">{{title}}</li>
+ </ul>
+ 
+ 
+<div ng-show="a.selection=='NewGroupPage' || a.selection=='EditGroupPage'" class="navbar" style="width:95%;">
+  <div class="navbar-inner">
+   <ul class="nav">
+   <li><a href="#"><i class="fa fa-refresh" title="Reload Page"></i></a></li>
+   <li><a href="#"><i class="fa fa-user" title="Creation / Modified By"></i></a></li>
+   <li><a href="#"><i class="fa fa-comments" title="Comments"></i></a></li>
+   <li><a href="#"><i class="fa fa-envelope" title="Email"></i></a></li>
+   <li><a href="#"><i class="fa fa-arrow-left" title="Previous Record"></i></a></li>
+   <li><a href="#"><i class="fa fa-arrow-right" title="Next Record"></i></a></li>
+</ul>
+    <ul class="nav pull-right">
+      <li ><a href="#" alt="refresh"><i class="fa fa-puzzle-piece"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-file-o"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-list"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-table"></i></a></li>
+    </ul>
+  </div>
+</div>
+
+<div ng-show="a.selection == 'GroupListPage'" class="navbar" style="width:95%;">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li ><a href="#" alt="refresh"><i class="fa fa-refresh"></i></a></li>
+      <li><a ng-click="a.selection='NewGroupPage'" ><i class="fa fa-plus"></i></a></li>
+      <li><a href="#" ><i class="fa fa-search"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-tag"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-times"></i></a></li>
+      <li class="pull-right"><a href="#" atl><i class="fa fa-check"></i></a></li>
+    </ul>
+    <ul class="nav pull-right">
+      <li ><a href="#" alt="refresh"><i class="fa fa-puzzle-piece"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-file-o"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-list"></i></a></li>
+      <li><a href="#" atl><i class="fa fa-table"></i></a></li>
+    </ul>
+  </div>
+</div>
+ 
+ 
+ <div ng-show="a.selection=='GroupListPage'">
+      <table class="table table-hover" style="width:90%">
+     	  <tr ng-repeat="r in a.grouplist.data">
+		  	<td>{{$index + 1}}</td>
+		  	<td><a stop-event="click" ng-click="a.grouplist.current = r;a.selection='EditGroupPage'">{{r.task_name}}</a></td>
+      		<td>{{r.GROUP_NAME}}</td>
+      	  </tr>
+    </table>
+</div>
+<div ng-show="a.selection=='NewGroupPage' || a.selection=='EditGroupPage'">
+  <form class="form-horizontal"> 
+    <fieldset>
+    <!-- Form Name -->
+    <legend><i class="fa fa-align-justify"></i> Group Details</legend>
+    <!-- Text input-->
+    <div class="row-fluid">
+    <div class="span6">
+  <!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="groupName">Group Name</label>
+  <div class="controls">
+    <input id="groupName" name="groupName" type="text" ng-model="groupName"
+    placeholder="placeholder" class="input-xlarge">
+  </div>
+</div>
+
+<!-- Select Basic -->
+    <div class="control-group">
+      <label class="control-label" for="desc">Description</label>
+      <div class="controls">
+        <textarea id="desc" name="desc" ng-model="desc" class="input-xlarge"></textarea>
+      </div>
+    </div>
+    <div class="control-group">
+     <div class="controls">
+        <div class="btn btn-success" ng-click="addNewGroup();">Save</div>
+      </div>
+    </div>
+</div>
+</div>  
+</div>
+</fieldset>
+</form>
+</div>
+</div>
+</form>
+</div>
+ 
+</div>
