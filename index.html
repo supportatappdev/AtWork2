@@ -1,0 +1,193 @@
+<html lang="en">
+  <head>  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>AtWork >>
+    </title>
+    <BOOTSTRAP_CSS_ALL>
+<!--<link href="../../assets/css/bootstrap-2.3.2.css" rel="stylesheet"
+	type="text/css" />
+<link href="../../assets/css/bootstrap-responsive-2.3.2.css"
+ rel="stylesheet" type="text/css" />  
+<link href="../../assets/css/font-awesome.css" rel="stylesheet"
+	type="text/css" />   
+-->	<link href="../../assets/css/datepicker.css"
+ rel="stylesheet" type="text/css" />  
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+       
+    <style>
+        
+        .actionItem {
+            padding: 8px 35px 8px 14px;
+        }
+        .comments {
+            background-color: #eeeeee;
+            margin: 15px;
+            padding: 12px;  
+            border-radius: 5px;
+        }
+        .input-group-btn {
+        position: relative;
+        font-size: 0;
+        white-space: nowrap;
+        }
+    </style>
+  </head>
+
+  <body role="document" >   
+    <!-- Fixed navbar -->  
+      <div class="container" >    
+        <!-- xc-->  
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button> 
+          <span class="brand" ><i class="fa fa-bullhorn"></i> AtWork</span>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+              <li><a href="#about"><i class="fa fa-user"></i>  About</a></li>
+              <li><a href="#contact"><i class="fa fa-phone"></i>  Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+           <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+               <a href="#" class="navbar-link"  id="logout"><i class="fa fa-sign-out"></i> Logout</a>
+            </p>
+            </div>
+        </div>
+      </div>
+    </div>
+ 
+        <div ng-app="AtWork" class="mainView" ng-controller="IndexCtrl" >
+           <div ng-show="selection=='MainPage'" class="hero-unit" style="margin-top: 50px !important;">
+                 
+           <div class="row"  >   
+            <!--style="background-image: url(../../assets/img/ws4.jpg);height:500px"-->
+            <div>  
+               <div ng-show="$parent.selection == 'MainPage'" class="row-fluid">
+                <div class="span4"> 
+            
+                    <div class="actionItem">
+                        <a href="#/projectlist" class="btn btn-primary btn-large"><i class="fa fa-puzzle-piece"></i> Documents</a>
+                    </div>
+                    <div class="actionItem">
+                        <a href="#/tasklist" class="btn btn-primary btn-large"><i class="fa fa-edit"></i> Tools</a>
+                    </div>
+                    <div class="actionItem">
+                    <a href="#/projectlist" class="btn btn-primary btn-large"> <i class="fa fa-plus"></i> Standard Reports</a>
+                    </div>
+                  
+                </div>   
+                <div class="span4">
+                    <div class="actionItem">
+                      <a href="#/projectlist" class="btn btn-primary btn-large"><i class="fa fa-puzzle-piece"></i> Projects</a> 
+                    </div>
+                    <div class="actionItem">
+                        <a href="#/tasklist" class="btn btn-primary btn-large"><i class="fa fa-clock-o"></i> Time Log </a>
+                    </div>
+                  <div class="actionItem">
+                        <a href="#/charts" class="btn btn-primary btn-large"><i class="fa fa-clock-o"></i> Reports  </a>
+                    </div>
+                    
+                </div>   
+                <div class="span4"> 
+                        <div class="actionItem">
+                    <a href="#/grouplist" class="btn btn-primary btn-large"><i class="fa fa-users"></i> Add Group</a>
+                    </div>
+                    <div class="actionItem">
+                        <a href="#/rsclist" class="btn btn-primary btn-large"><i class="fa fa-user"></i> Add User </a>
+                    </div>
+                    <div class="actionItem">
+                        <a href="#/custlist" class="btn btn-primary btn-large"><i class="fa fa-money"></i> Add Client </a>
+                    </div>
+               
+                </div>
+                </div>
+            </div>
+            </div>
+            </div>
+        <div ng-view class="container view-animate-container row" style="width:95%;margin-top:50px">
+        
+        </div>
+        </div><!-- /.col-sm-4 -->
+        </div>    
+      
+	</div>	
+	  <!-- new template-->
+	   <!-- Example row of columns -->
+	  <!-- new template-->
+    </div> <!-- /container -->  
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+</div>  
+<BOOTSTRAP_JS_ALL>
+<!--<script src="../../assets/js/jquery.js"></script>
+<script src="../../assets/js/jquery-ui.min.js"></script>
+<script src="../../assets/angular-1.2.3/angular.js"></script>
+<script src="../../assets/angular-1.2.3/angular-ui.js"></script>
+<script src="../../assets/angular-1.2.3/angular-route.js"></script>
+<script src="../../assets/angular-1.2.3/angular-resource.js"></script>
+<script src="../../assets/js/bootstrap-datepicker.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../assets/js/bootstrap-dropdown.js"></script>
+-->	<script src="anguidirectives.js"></script>
+    <script src="../../assets/js/docs.min.js"></script>
+      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      </script>    
+    
+     <script src="../../charts/chartsapi.js"></script>
+     
+    <script src="app.js"></script>
+    <script src="controller.js"></script> 
+    <script src="tasks.js"></script>
+    <script src="projects.js"></script>
+    <script src="customer.js"></script>
+    <script src="group.js"></script>
+    <script src="resource.js"></script>
+    <script src="chartdata.js"></script>
+    <script src="charts.js"></script>
+     <script type="text/javascript">
+        $(function(){
+        	//window.location.href = "../apps/createapps/index.html#/";
+          	$('#logout').click(
+          			function(e) {  
+        				e.preventDefault(); 
+        				$.get('../../api/logout', function(result) {
+          						var rdata = $.parseJSON(result);
+          					if(rdata.status =="S") {
+          							window.location.href = getAppName(window.location.pathname);
+          					} else {
+    							console.log("**** Error in logout *****"+result);
+          					}
+          			  });
+          		});  
+          });
+       function getAppName(p) {
+        var s = p.split("/").reverse();
+        s.splice(0, 3);
+        return s.reverse().join("/");
+    } 
+    </script>
+  </body>
+</html>
