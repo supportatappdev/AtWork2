@@ -186,7 +186,7 @@ app.directive("checkList", [function () {
       });
       if (_.contains(scope.selectedItemsArray, scope.value)) {
           elem.prop("checked", true);
-      }
+      }   
       elem.on("change", function () {
           if (elem.prop("checked")) {
               if (!_.contains(scope.selectedItemsArray, scope.value)) {
